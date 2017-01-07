@@ -1,0 +1,30 @@
+{% extends 'ManuTfeBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Statistique</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ entity.reponse }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('manu_statistique') }}">
+            Retour à mes statistiques
+        </a>
+    </li>
+</ul>
+{% endblock %}

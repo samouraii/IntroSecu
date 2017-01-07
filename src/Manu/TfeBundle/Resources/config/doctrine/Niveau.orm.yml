@@ -1,0 +1,17 @@
+Manu\TfeBundle\Entity\Niveau:
+    type: entity
+    repositoryClass: Manu\TfeBundle\Entity\NiveauRepository
+    table: niveau
+    id:
+      id:
+        type: integer
+        generator: { strategy: AUTO}
+    fields:
+      nom:
+        type: string
+        length: 255
+        unique: true
+    oneToMany:
+      questions:
+        targetEntity: Question
+        mappedBy: niveau

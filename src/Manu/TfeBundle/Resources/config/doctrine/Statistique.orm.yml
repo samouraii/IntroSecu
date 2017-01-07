@@ -1,0 +1,30 @@
+Manu\TfeBundle\Entity\Statistique:
+    type: entity
+    repositoryClass: Manu\TfeBundle\Entity\StatistiqueRepository
+    table: statistique
+    id:
+      id:
+        type: integer
+        generator: { strategy: AUTO}
+    fields:
+      reponse:
+        type: string
+        length: 255
+      date:
+        type: datetime
+        length: 255
+    manyToOne:
+      user:
+        targetEntity: User
+        inversedBy: statistiques
+        joinColumn:
+          name: user_id
+          referencedColumnName: id
+      question:
+        targetEntity: Question
+        inversedBy: statistiques
+        joinColumn:
+          name: question_id
+          referencedColumnName: id
+    lifecycleCallbacks:
+      prePersist: [ setDateValue ]

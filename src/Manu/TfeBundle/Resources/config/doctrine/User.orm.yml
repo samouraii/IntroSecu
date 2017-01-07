@@ -1,0 +1,26 @@
+Manu\TfeBundle\Entity\User:
+    type: entity
+    table: user
+    id:
+      id:
+        type: integer
+        generator: { strategy: AUTO}
+    fields:
+      username:
+        type: string
+        length: 255
+        unique: true
+      password:
+        type: string
+        length: 255
+    oneToMany:
+      statistiques:
+        targetEntity: Statistique
+        mappedBy: user
+    manyToOne:
+      role:
+        targetEntity: Role
+        inversedBy: users
+        joinColumn:
+          name: role_id
+          referencedColumnName: id

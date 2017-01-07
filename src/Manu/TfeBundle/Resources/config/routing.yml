@@ -1,0 +1,29 @@
+ManuTfeBundle_categorie:
+    resource: "@ManuTfeBundle/Resources/config/routing/categorie.yml"
+    prefix: /categorie
+ManuTfeBundle_question:
+    resource: "@ManuTfeBundle/Resources/config/routing/question.yml"
+    prefix: /question
+ManuTfeBundle_statistique:
+    resource: "@ManuTfeBundle/Resources/config/routing/statistique.yml"
+    prefix: /statistique
+ManuTfeBundle_user:
+    resource: "@ManuTfeBundle/Resources/config/routing/user.yml"
+    prefix: /user
+manu_tfe_homepage:
+    path:     /
+    defaults: { _controller: ManuTfeBundle:Default:index }
+login:
+    pattern:   /login
+    defaults:  { _controller: ManuTfeBundle:Default:login }
+login_check:
+    pattern:   /login_check
+logout:
+    pattern:   /logout
+register:
+    path:     /register
+    defaults: { _controller: "ManuTfeBundle:User:register" }
+register_create:
+    path:     /register/create
+    defaults: { _controller: "ManuTfeBundle:User:create" }
+    requirements: { _method: post }

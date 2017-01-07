@@ -1,0 +1,25 @@
+{% extends 'ManuTfeBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Listing des élèves</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Cotation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.getPoint }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+    </ul>
+    {% endblock %}

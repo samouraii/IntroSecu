@@ -1,0 +1,3 @@
+manu_eleve:
+    path:     /
+    defaults: { _controller: "ManuTfeBundle:User:eleve" }

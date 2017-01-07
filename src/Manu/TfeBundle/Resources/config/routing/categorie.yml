@@ -1,0 +1,30 @@
+manu_categorie:
+    path:     /
+    defaults: { _controller: "ManuTfeBundle:Categorie:index" }
+
+manu_categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "ManuTfeBundle:Categorie:show" }
+
+manu_categorie_new:
+    path:     /new
+    defaults: { _controller: "ManuTfeBundle:Categorie:new" }
+
+manu_categorie_create:
+    path:     /create
+    defaults: { _controller: "ManuTfeBundle:Categorie:create" }
+    requirements: { _method: post }
+
+manu_categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ManuTfeBundle:Categorie:edit" }
+
+manu_categorie_update:
+    path:     /{id}/update
+    defaults: { _controller: "ManuTfeBundle:Categorie:update" }
+    requirements: { _method: post|put }
+
+manu_categorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ManuTfeBundle:Categorie:delete" }
+    requirements: { _method: post|delete }

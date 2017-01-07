@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% block title %}
+        Générateur d'exercices réseau
+      {% endblock %}
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('bundles/manutfe/css/main.css') }}" type="text/css" media="all" />
+    {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ asset('bundles/manutfe/images/favicon.ico') }}" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <div class="content">
+          <h1>Générateur d'exercices réseau</h1>
+ 
+          <div id="sub_header">
+            <div class="menu">
+              <h2>Menu</h2>
+              <ul>
+              <li>
+              {% if app.user %}
+              Bienvenu {{ app.user.username }}
+              (<a href="{{ path('logout') }}">Se déconnecter</a>)
+              {% else %}
+              <li><a href="{{ path('login') }}">Se connecter</a></li>
+              <li><a href="{{ path('register') }}">S'inscrire</a></li>
+              {% endif %}
+              </li>
+              {% if is_granted('ROLE_ADMIN') %}
+              <li><a href="{{ path('sonata_admin_dashboard') }}">Administration</a></li>
+              <li><a href="{{ path('manu_statistique') }}">Statistiques</a></li>
+              <li><a href="{{ path('manu_eleve') }}">Elèves</a></li>
+              {% endif %}
+              {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('manu_question_search') }}">Exercices</a></li>
+                <li><a href="{{ path('manu_statistique') }}">Statistiques</a></li>
+              {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div id="content">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash_notice">
+        {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="flash_error">
+        {{ flashMessage }}
+        </div>
+        {% endfor %}
+ 
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+      </div>
+ 
+      <div id="footer">
+        <div class="content">
+          <span class="symfony">
+            propulsé par <a href="http://www.symfony.com/">
+              <img src="{{ asset('bundles/manutfe/images/symfony.gif') }}" alt="symfony framework" />
+            </a>
+          </span>
+          <ul>
+            <li><a href="">News</a></li>
+            <li class="last"><a href="">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

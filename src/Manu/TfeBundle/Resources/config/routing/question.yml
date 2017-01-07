@@ -1,0 +1,38 @@
+manu_question:
+    path:     /
+    defaults: { _controller: "ManuTfeBundle:Question:index" }
+
+manu_question_show:
+    path:     /{id}/show
+    defaults: { _controller: "ManuTfeBundle:Question:show" }
+
+manu_question_show_random:
+    path:     /random
+    defaults: { _controller: "ManuTfeBundle:Question:random" }
+
+manu_question_new:
+    path:     /new
+    defaults: { _controller: "ManuTfeBundle:Question:new" }
+
+manu_question_create:
+    path:     /create
+    defaults: { _controller: "ManuTfeBundle:Question:create" }
+    requirements: { _method: post }
+
+manu_question_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ManuTfeBundle:Question:edit" }
+
+manu_question_update:
+    path:     /{id}/update
+    defaults: { _controller: "ManuTfeBundle:Question:update" }
+    requirements: { _method: post|put }
+
+manu_question_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ManuTfeBundle:Question:delete" }
+    requirements: { _method: post|delete }
+
+manu_question_search:
+    path:     /search
+    defaults: { _controller: "ManuTfeBundle:Question:search" }

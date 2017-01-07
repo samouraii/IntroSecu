@@ -1,0 +1,18 @@
+{% extends 'ManuTfeBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Question {{ entity.id }}: {{ entity.titre }}</h1>
+
+    <table class="record_properties">
+        <tbody>
+            {% if entity.webpath is not empty %}
+            <tr>
+                <td><img src="{{ asset(entity.webPath) }}" /></td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>Question: {{ entity.question }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

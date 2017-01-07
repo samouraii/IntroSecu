@@ -1,0 +1,49 @@
+{% extends 'ManuTfeBundle::layout.html.twig' %}
+
+{% block content%}
+    {% if is_granted('ROLE_USER') %}
+    <h1>Mes statistiques</h1>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <h1>Listing des statistiques</h1>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form(filter_form) }}
+    {% endif %}
+    <table class="records_list">
+        <thead>
+            <tr>
+              {% if is_granted('ROLE_ADMIN') %}
+                <th>Elève</th>
+              {% endif %}
+                <th>Catégorie</th>
+                <th>Question</th>
+                <th>Réponse</th>
+                <th>Date</th>
+                <th>Résultat</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+              {% if is_granted('ROLE_ADMIN') %}
+                <td>{{ entity.user.username }} ({{ entity.user.getPoint }})</td>
+              {% endif %}
+                <td>{{ entity.question.categorie }}</td>
+                <td><a href="{{ path('manu_question_show', { 'id': entity.question.id }) }}">{{ entity.question.titre }}</a></td>
+                <td>{{ entity.reponse }}</td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                {% if entity.reponse == entity.question.reponse %}
+                    <td>Bonne réponse !</td>
+                {% else %}
+                    <td>Mauvaise réponse...</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_USER') %}
+    <h1>Cotation</h1>
+    {{ user.getPoint }}
+    {% endif %}
+    {% endblock %}

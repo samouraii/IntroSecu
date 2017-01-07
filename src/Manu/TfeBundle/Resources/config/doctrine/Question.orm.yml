@@ -1,0 +1,45 @@
+Manu\TfeBundle\Entity\Question:
+    type: entity
+    repositoryClass: Manu\TfeBundle\Entity\QuestionRepository
+    table: question
+    id:
+      id:
+        type: integer
+        generator: { strategy: AUTO}
+    fields:
+      titre:
+        type: string
+        length: 255
+      image:
+        type: string
+        length: 255
+        nullable: true
+      question:
+        type: string
+        length: 255
+      reponse:
+        type: string
+        length: 255
+    manyToOne:
+      categorie:
+        targetEntity: Categorie
+        inversedBy: questions
+        joinColumn:
+          name: categorie_id
+          referencedColumnName: id
+      niveau:
+        targetEntity: Niveau
+        inversedBy: questions
+        joinColumn:
+          name: niveau_id
+          referencedColumnName: id
+    oneToMany:
+      statistiques:
+        targetEntity: Statistique
+        mappedBy: question
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

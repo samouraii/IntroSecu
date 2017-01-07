@@ -1,0 +1,24 @@
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+            logout:
+                path:   /logout
+                target: /
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_ADMIN }
+        - { path: ^/question, roles: ROLE_USER }
+        - { path: ^/statistique, roles: [ROLE_ADMIN, ROLE_USER] }
+
+    providers:
+        main:
+            entity: { class: Manu\TfeBundle\Entity\User, property: username }
+
+    encoders:
+        Manu\TfeBundle\Entity\User: sha512

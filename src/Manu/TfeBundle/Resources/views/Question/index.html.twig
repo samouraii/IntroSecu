@@ -1,0 +1,45 @@
+{% extends 'ManuTfeBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Question list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Question</th>
+                <th>Reponse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('manu_question_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.question }}</td>
+                <td>{{ entity.reponse }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('manu_question_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('manu_question_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('manu_question_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

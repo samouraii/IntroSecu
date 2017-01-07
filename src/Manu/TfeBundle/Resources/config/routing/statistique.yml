@@ -1,0 +1,30 @@
+manu_statistique:
+    path:     /
+    defaults: { _controller: "ManuTfeBundle:Statistique:index" }
+
+manu_statistique_show:
+    path:     /{id}/show
+    defaults: { _controller: "ManuTfeBundle:Statistique:show" }
+
+manu_statistique_new:
+    path:     /new
+    defaults: { _controller: "ManuTfeBundle:Statistique:new" }
+
+manu_statistique_create:
+    path:     /create
+    defaults: { _controller: "ManuTfeBundle:Statistique:create" }
+    requirements: { _method: post }
+
+manu_statistique_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ManuTfeBundle:Statistique:edit" }
+
+manu_statistique_update:
+    path:     /{id}/update
+    defaults: { _controller: "ManuTfeBundle:Statistique:update" }
+    requirements: { _method: post|put }
+
+manu_statistique_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ManuTfeBundle:Statistique:delete" }
+    requirements: { _method: post|delete }
